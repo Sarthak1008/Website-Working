@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MovieComponent } from './movie/movie.component';
+import { ConfettiComponent } from './confetti/confetti.component';
+import { HobbiesComponent } from './hobbies/hobbies.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MovieComponent, ConfettiComponent, HobbiesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

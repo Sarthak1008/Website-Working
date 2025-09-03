@@ -1,0 +1,45 @@
+<div class="movie-reel-container">
+  <div class="film-reel">
+    <!-- Film strip with perforated edges -->
+    <div class="film-strip" #filmStrip>
+      <!-- Duplicate frames for seamless looping -->
+      <div class="film-frames" *ngFor="let frame of filmFrames; let i = index">
+        <div class="film-frame">
+          <!-- Perforated left edge -->
+          <div class="film-perforations left">
+            <div class="perforation" *ngFor="let p of [1,2,3,4,5,6,7,8]"></div>
+          </div>
+          
+          <!-- Image frame -->
+          <div class="image-container">
+            <img [src]="frame" [alt]="'Film frame ' + (i + 1)" loading="lazy">
+            <div class="frame-number">{{ i + 1 }}</div>
+          </div>
+          
+          <!-- Perforated right edge -->
+          <div class="film-perforations right">
+            <div class="perforation" *ngFor="let p of [1,2,3,4,5,6,7,8]"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Duplicate frames for seamless looping -->
+      <div class="film-frames" *ngFor="let frame of filmFrames; let i = index">
+        <div class="film-frame">
+          <div class="film-perforations left">
+            <div class="perforation" *ngFor="let p of [1,2,3,4,5,6,7,8]"></div>
+          </div>
+          
+          <div class="image-container">
+            <img [src]="frame" [alt]="'Film frame ' + (i + 1)" loading="lazy">
+            <div class="frame-number">{{ i + 1 }}</div>
+          </div>
+          
+          <div class="film-perforations right">
+            <div class="perforation" *ngFor="let p of [1,2,3,4,5,6,7,8]"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
