@@ -13,26 +13,23 @@ interface PolaroidItem {
   imports: [CommonModule],
   template: `
     <div class="polaroid-section" aria-label="Hobbies gallery">
-      <!-- Gentle moving ribbon -->
-      <svg class="ribbon" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,60 C200,20 300,100 500,60 C700,20 800,100 1000,60" fill="none" stroke="#be92ff" stroke-width="6" stroke-linecap="round"/>
-        <path d="M0,70 C200,30 300,110 500,70 C700,30 800,110 1000,70" fill="none" stroke="#ffa6c9" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-
-      <div class="polaroid-tray">
-        <div 
-          class="polaroid" 
-          *ngFor="let item of items; index as i" 
-          [style.--rotate]="item.rotation + 'deg'"
-          [style.zIndex]="100 + i"
-          tabindex="0"
-          role="img" 
-          [attr.aria-label]="item.caption"
-        >
-          <div class="photo">
-            <img [src]="item.url" [alt]="item.caption" loading="lazy" />
+      <!-- Marquee container for polaroids -->
+      <div class="marquee-container">
+        <div class="polaroid-tray marquee">
+          <div
+            class="polaroid"
+            *ngFor="let item of items; index as i"
+            [style.--rotate]="item.rotation + 'deg'"
+            [style.zIndex]="100 + i"
+            tabindex="0"
+            role="img"
+            [attr.aria-label]="item.caption"
+          >
+            <div class="photo">
+              <img [src]="item.url" [alt]="item.caption" loading="lazy" />
+            </div>
+            <div class="caption">{{ item.caption }}</div>
           </div>
-          <div class="caption">{{ item.caption }}</div>
         </div>
       </div>
     </div>
@@ -50,14 +47,19 @@ export class HobbiesComponent {
     { url: 'https://picsum.photos/id/1050/300/300', caption: 'Cheese!' }
   ];
 
-  items: PolaroidItem[] = this.defaults.map((d) => ({
+  // Map items with alternating rotation directions:
+  items: PolaroidItem[] = this.defaults.map((d, i) => ({
     url: d.url,
     caption: d.caption,
-    rotation: this.randomRotation()
+    rotation: this.randomRotation(i)
   }));
 
-  private randomRotation(): number {
-    // random tilt between -12 and 12 deg
-    return Math.round((-12 + Math.random() * 24) * 10) / 10;
+  /**
+   * Returns a random degree between 0° and 12°.
+   * Even indices are positive (tilting to the right) and odd indices are negative (tilting to the left).
+   */
+  private randomRotation(index: number): number {
+    const angle = Math.random() * 12;
+    return index % 2 === 0 ? angle : -angle;
   }
 }

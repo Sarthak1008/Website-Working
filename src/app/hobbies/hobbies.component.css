@@ -3,8 +3,11 @@
   left: 0;
   right: 320px; /* keep clear of the movie reel width */
   bottom: 0;
-  padding: 0 12px 8px 12px;
-  z-index: 900; /* below movie reel (1000) */
+  padding: 8px 12px 12px 12px;
+  z-index: 900;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  border-top: 1px solid #ddd;
 }
 
 /* Ribbon above the cards */
@@ -20,28 +23,42 @@
 }
 
 @keyframes ribbonSway {
-  0% { transform: translateY(0) }
-  50% { transform: translateY(6px) }
-  100% { transform: translateY(0) }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0); }
 }
 
-.polaroid-tray {
-  position: relative;
+/* Marquee container wrapping the polaroid tray */
+.marquee-container {
+  overflow: hidden;
   width: 100%;
-  height: 240px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(120px, 160px);
-  gap: 14px;
-  align-items: end;
-  pointer-events: none;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 8px 12px;
+  position: relative;
 }
 
+/* Update polaroid tray for horizontal flex layout and marquee animation */
+.polaroid-tray {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  /* To allow seamless scrolling, duplicate the content if needed */
+  width: max-content;
+}
+
+/* Marquee animation applied to the tray */
+.marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Individual polaroid card */
 .polaroid {
   --rotate: 0deg;
-  width: 100%;
+  width: 160px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(0,0,0,0.04);
@@ -51,39 +68,77 @@
   pointer-events: auto;
 }
 
-.polaroid:focus-visible { outline: 2px solid #6ea8fe; outline-offset: 2px; }
-
-.polaroid:hover {
-  transform: rotate(calc(var(--rotate) * 0.6)) translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.28);
+.polaroid:focus-visible {
+  outline: 2px solid #6ea8fe;
+  outline-offset: 2px;
 }
 
-.photo { width: 100%; height: 120px; overflow: hidden; border-radius: 10px 10px 6px 6px; }
-.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.polaroid:hover {
+  transform: rotate(calc(var(--rotate) * 0.6)) translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+}
 
+/* Photo container and image */
+.photo {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 10px 10px 6px 6px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.polaroid:hover .photo img {
+  filter: brightness(1.05);
+}
+
+/* Caption style */
 .caption {
   font-family: "Comic Sans MS", "Marker Felt", system-ui, sans-serif;
   font-size: 14px;
-  line-height: 1;
+  line-height: 1.2;
   color: #222;
   padding: 10px 8px 12px;
   text-align: center;
+  background: #f7f7f7;
+  border-top: 1px solid #eee;
 }
 
-/* Idle sway */
-@keyframes sway { 0% { transform: rotate(calc(var(--rotate) - 1deg)); } 50% { transform: rotate(calc(var(--rotate) + 1deg)); } 100% { transform: rotate(calc(var(--rotate) - 1deg)); } }
-.polaroid { animation: sway 6s ease-in-out infinite; }
+/* Subtle idle sway for a natural look */
+@keyframes sway {
+  0% { transform: rotate(calc(var(--rotate) - 1deg)); }
+  50% { transform: rotate(calc(var(--rotate) + 1deg)); }
+  100% { transform: rotate(calc(var(--rotate) - 1deg)); }
+}
 
-/* Responsive */
+.polaroid {
+  animation: sway 6s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
 @media (max-width: 900px) {
-  .polaroid-section { right: 280px; }
-  .polaroid-tray { height: 210px; gap: 12px; grid-auto-columns: minmax(110px, 140px); }
-  .photo { height: 100px; }
+  .polaroid {
+    width: 140px;
+  }
+  .photo {
+    height: 100px;
+  }
 }
 
 @media (max-width: 640px) {
-  .polaroid-section { right: 240px; }
-  .polaroid-tray { height: 180px; gap: 10px; grid-auto-columns: minmax(95px, 120px); }
-  .photo { height: 90px; }
-  .caption { font-size: 12px; }
+  .polaroid {
+    width: 120px;
+  }
+  .photo {
+    height: 90px;
+  }
+  .caption {
+    font-size: 12px;
+  }
 }
