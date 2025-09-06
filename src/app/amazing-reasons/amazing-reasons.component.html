@@ -1,0 +1,174 @@
+<div class="amazing-reasons-container">
+  <!-- Header Section -->
+  <div class="reasons-header">
+    <h1 class="reasons-title">
+      <span class="sparkle">✨</span>
+      Why She's Amazing
+      <span class="sparkle">✨</span>
+    </h1>
+    <p class="reasons-subtitle">All the wonderful reasons we adore her! 💖</p>
+    
+    <!-- Add Reason Button -->
+    <button class="add-reason-btn" (click)="toggleAddReason()">
+      <span class="btn-emoji">💝</span>
+      Add a Reason
+    </button>
+  </div>
+
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-emoji" *ngFor="let emoji of floatingEmojis; let i = index" 
+         [style.animation-delay]="i * 0.5 + 's'">
+      {{ emoji }}
+    </div>
+  </div>
+
+  <!-- Add Reason Form -->
+  <div class="add-reason-form" *ngIf="showAddReason">
+    <div class="form-container">
+      <h3>Share Why She's Amazing! 🌟</h3>
+      <div class="form-group">
+        <label for="reasonTitle">Reason Title:</label>
+        <input 
+          type="text" 
+          id="reasonTitle"
+          [(ngModel)]="newReason.title" 
+          placeholder="e.g., Her Amazing Smile"
+          class="form-input"
+        >
+      </div>
+      <div class="form-group">
+        <label for="reasonCategory">Category:</label>
+        <select id="reasonCategory" [(ngModel)]="newReason.category" class="form-select">
+          <option value="personality">Personality</option>
+          <option value="talents">Talents & Skills</option>
+          <option value="kindness">Kindness & Care</option>
+          <option value="uniqueness">Unique Qualities</option>
+          <option value="growth">Growth & Learning</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="reasonDescription">Description:</label>
+        <textarea 
+          id="reasonDescription"
+          [(ngModel)]="newReason.description" 
+          placeholder="Describe why this makes her amazing..."
+          class="form-textarea"
+          rows="4"
+        ></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="submit-btn" (click)="addReason()">
+          <span class="btn-emoji">✨</span>
+          Add Reason
+        </button>
+        <button class="cancel-btn" (click)="toggleAddReason()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="category-filter">
+    <div class="filter-buttons">
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory === 'all'"
+        (click)="filterByCategory('all')"
+      >
+        <span class="filter-emoji">✨</span>
+        All Reasons
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory === 'personality'"
+        (click)="filterByCategory('personality')"
+      >
+        <span class="filter-emoji">😊</span>
+        Personality
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory === 'talents'"
+        (click)="filterByCategory('talents')"
+      >
+        <span class="filter-emoji">🎨</span>
+        Talents
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory === 'kindness'"
+        (click)="filterByCategory('kindness')"
+      >
+        <span class="filter-emoji">💖</span>
+        Kindness
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory === 'uniqueness'"
+        (click)="filterByCategory('uniqueness')"
+      >
+        <span class="filter-emoji">🌟</span>
+        Unique
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory === 'growth'"
+        (click)="filterByCategory('growth')"
+      >
+        <span class="filter-emoji">🌱</span>
+        Growth
+      </button>
+    </div>
+  </div>
+
+  <!-- Reasons Grid -->
+  <div class="reasons-grid">
+    <div
+      class="reason-card"
+      *ngFor="let reason of getFilteredReasons()"
+      [ngClass]="reason.color"
+    >
+      <div class="reason-emoji">{{ reason.emoji }}</div>
+      <h3 class="reason-title">{{ reason.title }}</h3>
+      <p class="reason-description">{{ reason.description }}</p>
+      <div class="reason-category">
+        <span class="category-badge">{{ getCategoryName(reason.category) }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="getFilteredReasons().length === 0">
+    <div class="empty-emoji">✨</div>
+    <h3>No reasons found!</h3>
+    <p>Try selecting a different category or add a new reason! 🌟</p>
+    <button class="add-first-reason-btn" (click)="toggleAddReason()">
+      <span class="btn-emoji">💝</span>
+      Add First Reason
+    </button>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">{{ reasons.length }}</div>
+        <div class="stat-label">Total Reasons</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ getReasonsByCategory('kindness').length }}</div>
+        <div class="stat-label">Kindness Acts</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ getReasonsByCategory('talents').length }}</div>
+        <div class="stat-label">Amazing Talents</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">{{ getReasonsByCategory('uniqueness').length }}</div>
+        <div class="stat-label">Unique Qualities</div>
+      </div>
+    </div>
+  </div>
+</div>

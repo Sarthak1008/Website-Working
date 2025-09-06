@@ -1,0 +1,113 @@
+<div class="birthday-wishes-container">
+  <!-- Header Section -->
+  <div class="wishes-header">
+    <h1 class="wishes-title">
+      <span class="sparkle">🎂</span>
+      Birthday Wishes Board
+      <span class="sparkle">🎂</span>
+    </h1>
+    <p class="wishes-subtitle">Messages from your loved ones! 💝</p>
+    
+    <!-- Add Wish Button -->
+    <button class="add-wish-btn" (click)="toggleAddWish()">
+      <span class="btn-emoji">✍️</span>
+      Add a Wish
+    </button>
+  </div>
+
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-emoji" *ngFor="let emoji of floatingEmojis; let i = index" 
+         [style.animation-delay]="i * 0.5 + 's'">
+      {{ emoji }}
+    </div>
+  </div>
+
+  <!-- Add Wish Form -->
+  <div class="add-wish-form" *ngIf="showAddWish">
+    <div class="form-container">
+      <h3>Share Your Birthday Wish! 🎉</h3>
+      <div class="form-group">
+        <label for="wishName">Your Name:</label>
+        <input 
+          type="text" 
+          id="wishName"
+          [(ngModel)]="newWish.name" 
+          placeholder="Enter your name"
+          class="form-input"
+        >
+      </div>
+      <div class="form-group">
+        <label for="wishRelationship">Relationship:</label>
+        <select id="wishRelationship" [(ngModel)]="newWish.relationship" class="form-select">
+          <option value="family">Family</option>
+          <option value="friend">Friend</option>
+          <option value="colleague">Colleague</option>
+          <option value="neighbor">Neighbor</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="wishMessage">Your Message:</label>
+        <textarea 
+          id="wishMessage"
+          [(ngModel)]="newWish.message" 
+          placeholder="Write your birthday wish here..."
+          class="form-textarea"
+          rows="4"
+        ></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="submit-btn" (click)="addWish()">
+          <span class="btn-emoji">💝</span>
+          Share Wish
+        </button>
+        <button class="cancel-btn" (click)="toggleAddWish()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishes by Category -->
+  <div class="wishes-categories">
+    <div class="category-section" *ngFor="let relationship of ['family', 'friend', 'colleague', 'neighbor', 'other']">
+      <h2 class="category-title" *ngIf="getWishesByRelationship(relationship).length > 0">
+        <span class="category-emoji">{{ getRelationshipEmoji(relationship) }}</span>
+        {{ getRelationshipName(relationship) }}
+      </h2>
+      <div class="wishes-grid">
+        <div
+          class="wish-card"
+          *ngFor="let wish of getWishesByRelationship(relationship)"
+          [ngClass]="wish.color"
+        >
+          <div class="wish-header">
+            <div class="wish-emoji">{{ wish.emoji }}</div>
+            <div class="wish-meta">
+              <h3 class="wish-name">{{ wish.name }}</h3>
+              <span class="wish-date">{{ wish.timestamp | date:'short' }}</span>
+            </div>
+          </div>
+          <div class="wish-message">
+            <p>{{ wish.message }}</p>
+          </div>
+          <div class="wish-footer">
+            <span class="wish-relationship">{{ getRelationshipName(wish.relationship) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="wishes.length === 0">
+    <div class="empty-emoji">🎂</div>
+    <h3>No wishes yet!</h3>
+    <p>Be the first to add a birthday wish! 🎉</p>
+    <button class="add-first-wish-btn" (click)="toggleAddWish()">
+      <span class="btn-emoji">✍️</span>
+      Add First Wish
+    </button>
+  </div>
+</div>

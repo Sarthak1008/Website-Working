@@ -1,1 +1,103 @@
-<p>hobbies works!</p>
+<div class="hobbies-container">
+  <!-- Header Section -->
+  <div class="hobbies-header">
+    <h1 class="hobbies-title">
+      <span class="sparkle">✨</span>
+      My Amazing Hobbies
+      <span class="sparkle">✨</span>
+    </h1>
+    <p class="hobbies-subtitle">Click on any photo to see the magic! 🎭</p>
+    <div class="hobbies-stats">
+      <div class="stat-item">
+        <span class="stat-number">{{ items.length }}</span>
+        <span class="stat-label">Memories</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ totalClicks }}</span>
+        <span class="stat-label">Clicks</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ favoriteIndex + 1 }}</span>
+        <span class="stat-label">Favorite</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Polaroid Gallery Section -->
+  <div class="polaroid-section" aria-label="Interactive hobbies gallery">
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+      <div class="floating-emoji" *ngFor="let emoji of floatingEmojis; let i = index" 
+           [style.animation-delay]="i * 0.5 + 's'">
+        {{ emoji }}
+      </div>
+    </div>
+
+    <!-- Ribbon above the cards -->
+    <div class="ribbon">
+      <div class="ribbon-text">📸 Life's Beautiful Moments 📸</div>
+    </div>
+
+    <!-- Marquee container for polaroids -->
+    <div class="marquee-container" [class.paused]="isPaused">
+      <div class="polaroid-tray marquee" [class.paused]="isPaused">
+        <div
+          class="polaroid"
+          *ngFor="let item of items; index as i"
+          [style.--rotate]="item.rotation + 'deg'"
+          [style.zIndex]="100 + i"
+          [class.favorite]="i === favoriteIndex"
+          [class.clicked]="item.clicked"
+          tabindex="0"
+          role="button"
+          [attr.aria-label]="'Click to interact with ' + item.caption"
+          (click)="onPolaroidClick(item, i)"
+          (mouseenter)="onPolaroidHover(item, i)"
+          (mouseleave)="onPolaroidLeave(item, i)"
+          (keydown.enter)="onPolaroidClick(item, i)"
+        >
+          <div class="photo">
+            <img [src]="item.url" [alt]="item.caption" loading="lazy" />
+            <div class="photo-overlay">
+              <div class="overlay-content">
+                <span class="click-hint">Click me! 🎯</span>
+                <div class="reaction-emoji" *ngIf="item.reaction">{{ item.reaction }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="caption">{{ item.caption }}</div>
+          <div class="polaroid-effects">
+            <div class="sparkle" *ngFor="let sparkle of item.sparkles"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+      <button class="control-btn" (click)="togglePause()" [class.paused]="isPaused">
+        {{ isPaused ? '▶️' : '⏸️' }}
+      </button>
+      <button class="control-btn" (click)="shufflePhotos()">
+        🔀
+      </button>
+      <button class="control-btn" (click)="addRandomPhoto()">
+        ➕
+      </button>
+      <button class="control-btn" (click)="celebrateAll()">
+        🎉
+      </button>
+    </div>
+  </div>
+
+  <!-- Celebration Modal -->
+  <div class="celebration-modal" *ngIf="showCelebration" (click)="closeCelebration()">
+    <div class="celebration-content">
+      <h2>🎊 Amazing! 🎊</h2>
+      <p>You've discovered {{ totalClicks }} beautiful moments!</p>
+      <div class="celebration-emojis">
+        <span *ngFor="let emoji of celebrationEmojis">{{ emoji }}</span>
+      </div>
+    </div>
+  </div>
+</div>

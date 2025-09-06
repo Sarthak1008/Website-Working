@@ -1,154 +1,256 @@
-<div class="bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 min-h-screen p-6">
-  <div class="max-w-4xl mx-auto">
+<div class="bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 min-h-screen p-6 relative overflow-hidden">
+  <!-- Floating Background Elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="floating-emoji" style="top: 10%; left: 5%; animation-delay: 0s;">🍰</div>
+    <div class="floating-emoji" style="top: 20%; right: 10%; animation-delay: 1s;">🎂</div>
+    <div class="floating-emoji" style="top: 60%; left: 8%; animation-delay: 2s;">🧁</div>
+    <div class="floating-emoji" style="top: 80%; right: 5%; animation-delay: 3s;">🍩</div>
+    <div class="floating-emoji" style="top: 40%; left: 15%; animation-delay: 4s;">🍪</div>
+    <div class="floating-emoji" style="top: 70%; right: 15%; animation-delay: 5s;">🍭</div>
+  </div>
+
+  <div class="max-w-4xl mx-auto relative z-10">
     <!-- Header Section -->
     <div class="text-center mb-12">
-      <h1 class="text-5xl font-bold text-purple-800 mb-4 bounce-animation">
-        🐼 Why <span class="text-pink-600">{{ friendName }}</span> is Basically a Panda 🐼
-      </h1>
-      <div class="text-6xl mb-4 float-animation">🎉</div>
-      <p class="text-xl text-gray-700 max-w-2xl mx-auto">
-        Click on each section to discover the adorable similarities!
-        <span class="text-pink-500">✨</span>
+      <div class="relative inline-block">
+        <h1 class="text-6xl font-bold text-purple-800 mb-4 bounce-animation relative">
+          <span class="sparkle-text">🐼</span>
+          <span class="text-pink-600 gradient-text">{{ friendName }}</span>
+          <span class="sparkle-text">🐼</span>
+        </h1>
+        <div class="absolute -top-4 -right-4 text-4xl wiggle-animation">✨</div>
+        <div class="absolute -bottom-2 -left-4 text-3xl float-animation">🎂</div>
+      </div>
+      
+      <div class="text-8xl mb-6 float-animation relative">
+        <span class="cake-cursor">🎉</span>
+        <div class="absolute -top-2 -right-2 text-2xl pulse-glow">💖</div>
+      </div>
+      
+      <p class="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+        Click on each magical section to discover the adorable similarities!
+        <span class="text-pink-500 text-3xl">✨</span>
+        <span class="text-purple-500 text-2xl ml-2">🎂</span>
       </p>
 
       <!-- Name Input -->
-      <div class="mt-6">
-        <input
-          type="text"
-          placeholder="Enter your friend's name here!"
-          class="px-4 py-2 rounded-full border-2 border-pink-300 focus:border-pink-500 focus:outline-none text-center text-lg"
-          (keyup)="updateName($event)"
-        >
+      <div class="mt-8 relative">
+        <div class="relative inline-block">
+          <input
+            type="text"
+            placeholder="Enter your friend's name here!"
+            class="px-8 py-4 rounded-full border-4 border-pink-300 focus:border-pink-500 focus:outline-none text-center text-xl font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+            (keyup)="updateName($event)"
+            (focus)="onInputFocus($event)"
+            (blur)="onInputBlur($event)"
+          >
+          <div class="absolute -top-2 -right-2 text-2xl wiggle-animation">🎂</div>
+        </div>
       </div>
     </div>
 
     <!-- Panda Comparison Cards -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
 
       <!-- Snack Queen Card -->
       <button type="button"
-              class="panda-card bg-white rounded-3xl p-6 shadow-lg border-4 border-orange-200 relative overflow-hidden"
-              (click)="triggerExplosiveBurst($any($event.currentTarget))">
-        <div class="text-center">
-          <div class="text-4xl mb-3">🍕</div>
-          <h3 class="text-2xl font-bold text-orange-600 mb-3">Snack Queen</h3>
-          <div class="text-lg mb-4">🍕🥤</div>
-          <p class="text-gray-700 leading-relaxed">
+              class="panda-card bg-gradient-to-br from-orange-50 to-pink-50 rounded-3xl p-8 shadow-xl border-4 border-orange-300 relative overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              (click)="triggerExplosiveBurst($event.currentTarget)"
+              (mouseenter)="onCardHover($event)"
+              (mouseleave)="onCardLeave($event)">
+        <div class="absolute top-2 right-2 text-2xl opacity-20 group-hover:opacity-100 transition-opacity duration-300">🍰</div>
+        <div class="text-center relative z-10">
+          <div class="text-6xl mb-4 bounce-animation">🍕</div>
+          <h3 class="text-3xl font-bold text-orange-600 mb-4 gradient-text">Snack Queen</h3>
+          <div class="text-2xl mb-6 flex justify-center gap-2">
+            <span class="wiggle-animation">🍕</span>
+            <span class="float-animation">🥤</span>
+            <span class="bounce-animation">🍰</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-lg mb-6">
             Like pandas with bamboo, she always has her favorite snacks within arm's reach!
           </p>
-          <div class="mt-4 text-sm text-orange-500 font-semibold">Click for an explosive burst! 💥</div>
+          <div class="mt-6 text-sm text-orange-500 font-semibold bg-orange-100 px-4 py-2 rounded-full inline-block">
+            Click for an explosive burst! 💥
+          </div>
         </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-200/20 to-pink-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </button>
 
       <!-- Sleepy Expert Card -->
-      <div class="panda-card bg-white rounded-3xl p-6 shadow-lg border-4 border-blue-200"
-           (click)="triggerSleep($event.currentTarget)">
-        <div class="text-center">
-          <div class="text-4xl mb-3 sleepy-eyes">😴</div>
-          <h3 class="text-2xl font-bold text-blue-600 mb-3">Sleep Expert</h3>
-          <div class="text-lg mb-4">💤🛏️</div>
-          <p class="text-gray-700 leading-relaxed">
+      <button type="button"
+              class="panda-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 shadow-xl border-4 border-blue-300 relative overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              (click)="triggerSleep($event.currentTarget)"
+              (mouseenter)="onCardHover($event)"
+              (mouseleave)="onCardLeave($event)">
+        <div class="absolute top-2 right-2 text-2xl opacity-20 group-hover:opacity-100 transition-opacity duration-300">🍰</div>
+        <div class="text-center relative z-10">
+          <div class="text-6xl mb-4 sleepy-eyes float-animation">😴</div>
+          <h3 class="text-3xl font-bold text-blue-600 mb-4 gradient-text">Sleep Expert</h3>
+          <div class="text-2xl mb-6 flex justify-center gap-2">
+            <span class="wiggle-animation">💤</span>
+            <span class="float-animation">🛏️</span>
+            <span class="bounce-animation">🍰</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-lg mb-6">
             Pandas sleep 12-14 hours a day. She's definitely mastered this skill too!
           </p>
-          <div class="mt-4 text-sm text-blue-500 font-semibold">Click for sleepy vibes! 😴</div>
+          <div class="mt-6 text-sm text-blue-500 font-semibold bg-blue-100 px-4 py-2 rounded-full inline-block">
+            Click for sleepy vibes! 😴
+          </div>
         </div>
-      </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/20 to-indigo-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </button>
 
       <!-- Cuddle Master Card -->
-      <div class="panda-card bg-white rounded-3xl p-6 shadow-lg border-4 border-pink-200"
-           (click)="triggerCuddles($event.currentTarget)">
-        <div class="text-center">
-          <div class="text-4xl mb-3" id="cuddleEmoji">🤗</div>
-          <h3 class="text-2xl font-bold text-pink-600 mb-3">Cuddle Master</h3>
-          <div class="text-lg mb-4">🧸💕</div>
-          <p class="text-gray-700 leading-relaxed">
+      <button type="button"
+              class="panda-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-8 shadow-xl border-4 border-pink-300 relative overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              (click)="triggerCuddles($event.currentTarget)"
+              (mouseenter)="onCardHover($event)"
+              (mouseleave)="onCardLeave($event)">
+        <div class="absolute top-2 right-2 text-2xl opacity-20 group-hover:opacity-100 transition-opacity duration-300">🍰</div>
+        <div class="text-center relative z-10">
+          <div class="text-6xl mb-4 bounce-animation" id="cuddleEmoji">🤗</div>
+          <h3 class="text-3xl font-bold text-pink-600 mb-4 gradient-text">Cuddle Master</h3>
+          <div class="text-2xl mb-6 flex justify-center gap-2">
+            <span class="wiggle-animation">🧸</span>
+            <span class="float-animation">💕</span>
+            <span class="bounce-animation">🍰</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-lg mb-6">
             Pandas are incredibly cuddly and adorable. Just like her warm hugs!
           </p>
-          <div class="mt-4 text-sm text-pink-500 font-semibold">Click for heart explosion! 💖</div>
+          <div class="mt-6 text-sm text-pink-500 font-semibold bg-pink-100 px-4 py-2 rounded-full inline-block">
+            Click for heart explosion! 💖
+          </div>
         </div>
-      </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-pink-200/20 to-rose-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </button>
 
       <!-- Playful Spirit Card -->
-      <div class="panda-card bg-white rounded-3xl p-6 shadow-lg border-4 border-green-200"
-           (click)="triggerPlay($event.currentTarget)">
-        <div class="text-center">
-          <div class="text-4xl mb-3" id="playEmoji">🎮</div>
-          <h3 class="text-2xl font-bold text-green-600 mb-3">Playful Spirit</h3>
-          <div class="text-lg mb-4">🎯🎪</div>
-          <p class="text-gray-700 leading-relaxed">
+      <button type="button"
+              class="panda-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 shadow-xl border-4 border-green-300 relative overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              (click)="triggerPlay($event.currentTarget)"
+              (mouseenter)="onCardHover($event)"
+              (mouseleave)="onCardLeave($event)">
+        <div class="absolute top-2 right-2 text-2xl opacity-20 group-hover:opacity-100 transition-opacity duration-300">🍰</div>
+        <div class="text-center relative z-10">
+          <div class="text-6xl mb-4 wiggle-animation" id="playEmoji">🎮</div>
+          <h3 class="text-3xl font-bold text-green-600 mb-4 gradient-text">Playful Spirit</h3>
+          <div class="text-2xl mb-6 flex justify-center gap-2">
+            <span class="wiggle-animation">🎯</span>
+            <span class="float-animation">🎪</span>
+            <span class="bounce-animation">🍰</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-lg mb-6">
             Young pandas love to play and tumble around. She brings that same energy!
           </p>
-          <div class="mt-4 text-sm text-green-500 font-semibold">Click for bouncy fun! 🎉</div>
+          <div class="mt-6 text-sm text-green-500 font-semibold bg-green-100 px-4 py-2 rounded-full inline-block">
+            Click for bouncy fun! 🎉
+          </div>
         </div>
-      </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-green-200/20 to-emerald-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </button>
 
       <!-- Gentle Soul Card -->
-      <div class="panda-card bg-white rounded-3xl p-6 shadow-lg border-4 border-purple-200"
-           (click)="triggerGentle($event.currentTarget)">
-        <div class="text-center">
-          <div class="text-4xl mb-3">🌸</div>
-          <h3 class="text-2xl font-bold text-purple-600 mb-3">Gentle Soul</h3>
-          <div class="text-lg mb-4">🕊️💜</div>
-          <p class="text-gray-700 leading-relaxed">
+      <button type="button"
+              class="panda-card bg-gradient-to-br from-purple-50 to-violet-50 rounded-3xl p-8 shadow-xl border-4 border-purple-300 relative overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              (click)="triggerGentle($event.currentTarget)"
+              (mouseenter)="onCardHover($event)"
+              (mouseleave)="onCardLeave($event)">
+        <div class="absolute top-2 right-2 text-2xl opacity-20 group-hover:opacity-100 transition-opacity duration-300">🍰</div>
+        <div class="text-center relative z-10">
+          <div class="text-6xl mb-4 float-animation">🌸</div>
+          <h3 class="text-3xl font-bold text-purple-600 mb-4 gradient-text">Gentle Soul</h3>
+          <div class="text-2xl mb-6 flex justify-center gap-2">
+            <span class="wiggle-animation">🕊️</span>
+            <span class="float-animation">💜</span>
+            <span class="bounce-animation">🍰</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-lg mb-6">
             Pandas are peaceful and gentle creatures. Her kind heart matches perfectly!
           </p>
-          <div class="mt-4 text-sm text-purple-500 font-semibold">Click for peaceful vibes! ✨</div>
+          <div class="mt-6 text-sm text-purple-500 font-semibold bg-purple-100 px-4 py-2 rounded-full inline-block">
+            Click for peaceful vibes! ✨
+          </div>
         </div>
-      </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-200/20 to-violet-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </button>
 
       <!-- Rare & Special Card -->
-      <div class="panda-card bg-white rounded-3xl p-6 shadow-lg border-4 border-yellow-200"
-           (click)="triggerSpecial($event.currentTarget! as HTMLElement)"
-           (keydown.enter)="triggerSpecial($event.currentTarget! as HTMLElement)"
-           tabindex="0"
-           role="button"
-           [attr.aria-label]="'Click to trigger special animation for ' + friendName">
-        <div class="text-center">
-          <div class="text-4xl mb-3">⭐</div>
-          <h3 class="text-2xl font-bold text-yellow-600 mb-3">Rare & Special</h3>
-          <div class="text-lg mb-4">💎🌟</div>
-          <p class="text-gray-700 leading-relaxed">
+      <button type="button"
+              class="panda-card bg-gradient-to-br from-yellow-50 to-amber-50 rounded-3xl p-8 shadow-xl border-4 border-yellow-300 relative overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              (click)="triggerSpecial($event.currentTarget)"
+              (mouseenter)="onCardHover($event)"
+              (mouseleave)="onCardLeave($event)"
+              tabindex="0"
+              role="button"
+              [attr.aria-label]="'Click to trigger special animation for ' + friendName">
+        <div class="absolute top-2 right-2 text-2xl opacity-20 group-hover:opacity-100 transition-opacity duration-300">🍰</div>
+        <div class="text-center relative z-10">
+          <div class="text-6xl mb-4 pulse-glow">⭐</div>
+          <h3 class="text-3xl font-bold text-yellow-600 mb-4 gradient-text">Rare & Special</h3>
+          <div class="text-2xl mb-6 flex justify-center gap-2">
+            <span class="wiggle-animation">💎</span>
+            <span class="float-animation">🌟</span>
+            <span class="bounce-animation">🍰</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-lg mb-6">
             Pandas are precious and one-of-a-kind. Just like her amazing friendship!
           </p>
-          <div class="mt-4 text-sm text-yellow-500 font-semibold">Click for sparkles! ✨</div>
+          <div class="mt-6 text-sm text-yellow-500 font-semibold bg-yellow-100 px-4 py-2 rounded-full inline-block">
+            Click for sparkles! ✨
+          </div>
         </div>
-      </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-yellow-200/20 to-amber-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </button>
     </div>
 
     <!-- Fun Facts Section -->
-    <div class="bg-white rounded-3xl p-8 shadow-lg border-4 border-indigo-200 mb-8">
-      <h2 class="text-3xl font-bold text-indigo-600 text-center mb-6">🐼 Fun Panda Facts 🐼</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="text-center p-4 bg-indigo-50 rounded-2xl">
-          <div class="text-3xl mb-2">🎋</div>
-          <p class="text-gray-700">Pandas eat up to 40 pounds of bamboo daily!</p>
+    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 shadow-xl border-4 border-indigo-300 mb-12 relative overflow-hidden">
+      <div class="absolute top-4 right-4 text-3xl opacity-20">🍰</div>
+      <h2 class="text-4xl font-bold text-indigo-600 text-center mb-8 gradient-text">
+        <span class="sparkle-text">🐼</span> Fun Panda Facts <span class="sparkle-text">🐼</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="text-center p-6 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          <div class="text-4xl mb-4 bounce-animation">🎋</div>
+          <p class="text-gray-700 text-lg font-semibold">Pandas eat up to 40 pounds of bamboo daily!</p>
         </div>
-        <div class="text-center p-4 bg-indigo-50 rounded-2xl">
-          <div class="text-3xl mb-2">👶</div>
-          <p class="text-gray-700">Baby pandas are smaller than a mouse when born!</p>
+        <div class="text-center p-6 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          <div class="text-4xl mb-4 float-animation">👶</div>
+          <p class="text-gray-700 text-lg font-semibold">Baby pandas are smaller than a mouse when born!</p>
         </div>
-        <div class="text-center p-4 bg-indigo-50 rounded-2xl">
-          <div class="text-3xl mb-2">🧗</div>
-          <p class="text-gray-700">Pandas are excellent climbers and swimmers!</p>
+        <div class="text-center p-6 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          <div class="text-4xl mb-4 wiggle-animation">🧗</div>
+          <p class="text-gray-700 text-lg font-semibold">Pandas are excellent climbers and swimmers!</p>
         </div>
-        <div class="text-center p-4 bg-indigo-50 rounded-2xl">
-          <div class="text-3xl mb-2">🎨</div>
-          <p class="text-gray-700">Each panda has unique black and white markings!</p>
+        <div class="text-center p-6 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          <div class="text-4xl mb-4 pulse-glow">🎨</div>
+          <p class="text-gray-700 text-lg font-semibold">Each panda has unique black and white markings!</p>
         </div>
       </div>
     </div>
 
     <!-- Footer -->
-    <div class="text-center">
-      <div class="text-4xl mb-4">🐼💕</div>
-      <p class="text-xl text-gray-700 mb-4">
-        {{ friendName }} = The Human Panda!
+    <div class="text-center relative">
+      <div class="text-6xl mb-6 flex justify-center gap-4">
+        <span class="bounce-animation">🐼</span>
+        <span class="float-animation">💕</span>
+        <span class="wiggle-animation">🍰</span>
+        <span class="pulse-glow">✨</span>
+      </div>
+      <p class="text-3xl text-gray-700 mb-8 font-bold gradient-text">
+        {{ friendName }} = The Human Panda! 🎂
       </p>
       <button
         (click)="celebrateAll($event)"
-        class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-300 pulse-glow"
+        (mouseenter)="onButtonHover($event)"
+        (mouseleave)="onButtonLeave($event)"
+        class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-12 py-4 rounded-full text-2xl font-bold hover:from-pink-600 hover:to-purple-600 transition-all duration-500 pulse-glow shadow-2xl hover:shadow-3xl hover:scale-110 relative overflow-hidden group"
       >
-        🎉 Celebrate Our Panda Friend! 🎉
+        <span class="relative z-10">🎉 Celebrate Our Panda Friend! 🎉</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </button>
     </div>
   </div>

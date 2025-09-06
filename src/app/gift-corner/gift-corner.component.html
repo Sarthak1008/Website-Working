@@ -1,0 +1,117 @@
+<div class="gift-corner-container">
+  <!-- Header Section -->
+  <div class="gift-header">
+    <h1 class="gift-title">
+      <span class="sparkle">🎁</span>
+      Virtual Gift Corner
+      <span class="sparkle">🎁</span>
+    </h1>
+    <p class="gift-subtitle">Redeem these special coupons whenever you want! 💝</p>
+    
+    <!-- Progress Bar -->
+    <div class="progress-section">
+      <div class="progress-stats">
+        <div class="stat-item">
+          <span class="stat-number">{{ redeemedGifts }}</span>
+          <span class="stat-label">Redeemed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ totalGifts - redeemedGifts }}</span>
+          <span class="stat-label">Available</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ totalGifts }}</span>
+          <span class="stat-label">Total</span>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="getGiftProgress()"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-emoji" *ngFor="let emoji of floatingEmojis; let i = index" 
+         [style.animation-delay]="i * 0.5 + 's'">
+      {{ emoji }}
+    </div>
+  </div>
+
+  <!-- Gift Categories -->
+  <div class="gift-categories">
+    <div class="category-section" *ngFor="let category of ['cuddle', 'food', 'entertainment', 'adventure', 'self-care']">
+      <h2 class="category-title">
+        <span class="category-emoji">{{ getCategoryEmoji(category) }}</span>
+        {{ getCategoryName(category) }}
+      </h2>
+      <div class="gifts-grid">
+        <div
+          class="gift-card"
+          *ngFor="let gift of getGiftsByCategory(category)"
+          [class.redeemed]="gift.redeemed"
+          [ngClass]="gift.color"
+          (click)="onGiftClick(gift)"
+          [attr.aria-label]="gift.title + ' - ' + gift.description"
+        >
+          <div class="gift-emoji">{{ gift.emoji }}</div>
+          <h3 class="gift-card-title">{{ gift.title }}</h3>
+          <p class="gift-description">{{ gift.description }}</p>
+          <div class="gift-status" *ngIf="gift.redeemed">
+            <span class="redeemed-badge">✅ Redeemed</span>
+            <span class="redeem-date">{{ gift.redeemDate | date:'short' }}</span>
+          </div>
+          <div class="gift-overlay" *ngIf="!gift.redeemed">
+            <span class="click-hint">Click to redeem! 🎯</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <button class="control-btn" (click)="resetAllGifts()" title="Reset all gifts">
+      🔄
+    </button>
+    <button class="control-btn" (click)="celebrationMode = !celebrationMode" title="Toggle celebration">
+      🎉
+    </button>
+  </div>
+
+  <!-- Redeem Modal -->
+  <div class="redeem-modal" *ngIf="showRedeemModal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>🎁 Redeem Gift! 🎁</h2>
+        <button class="close-btn" (click)="closeModal()">×</button>
+      </div>
+      <div class="modal-body" *ngIf="selectedGift">
+        <div class="gift-preview">
+          <div class="gift-emoji-large">{{ selectedGift.emoji }}</div>
+          <h3>{{ selectedGift.title }}</h3>
+          <p>{{ selectedGift.description }}</p>
+        </div>
+        <div class="modal-actions">
+          <button class="redeem-btn" (click)="redeemGift()">
+            Redeem Now! ✨
+          </button>
+          <button class="cancel-btn" (click)="closeModal()">
+            Maybe Later
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Celebration Overlay -->
+  <div class="celebration-overlay" *ngIf="celebrationMode">
+    <div class="celebration-content">
+      <h2>🎊 Gift Redeemed! 🎊</h2>
+      <p>Enjoy your special treat! 💖</p>
+      <div class="celebration-emojis">
+        <span *ngFor="let emoji of ['🎉', '✨', '🎁', '💝', '🌟', '💖', '🎈', '🏆']">{{ emoji }}</span>
+      </div>
+    </div>
+  </div>
+</div>
