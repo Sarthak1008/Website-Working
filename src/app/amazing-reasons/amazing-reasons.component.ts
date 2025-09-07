@@ -39,96 +39,96 @@ export class AmazingReasonsComponent implements OnInit {
     this.reasons = [
       {
         id: '1',
-        title: 'Her Infectious Laugh',
-        description: 'The way she laughs makes everyone around her smile. It\'s like sunshine breaking through clouds on a rainy day!',
+        title: 'Your Infectious Laugh',
+        description: 'The way you laugh makes everyone around you smile. It\'s like sunshine breaking through clouds on a rainy day!',
         emoji: '😄',
         color: 'yellow',
         category: 'personality'
       },
       {
         id: '2',
-        title: 'Incredible Creativity',
-        description: 'She can turn the simplest things into works of art. Her imagination knows no bounds and inspires everyone around her.',
+        title: 'Your Incredible Creativity',
+        description: 'You can turn the simplest things into works of art. Your imagination knows no bounds and inspires everyone around you.',
         emoji: '🎨',
         color: 'purple',
         category: 'talents'
       },
       {
         id: '3',
-        title: 'Heart of Gold',
-        description: 'She\'s always the first to help someone in need. Her kindness and compassion make the world a better place.',
+        title: 'Your Heart of Gold',
+        description: 'You\'re always the first to help someone in need. Your kindness and compassion make the world a better place.',
         emoji: '💖',
         color: 'pink',
         category: 'kindness'
       },
       {
         id: '4',
-        title: 'Unique Perspective',
-        description: 'She sees the world in a way that\'s completely her own. Her fresh take on things always surprises and delights.',
+        title: 'Your Unique Perspective',
+        description: 'You see the world in a way that\'s completely your own. Your fresh take on things always surprises and delights.',
         emoji: '🔍',
         color: 'blue',
         category: 'uniqueness'
       },
       {
         id: '5',
-        title: 'Amazing Cook',
-        description: 'She can make even the simplest ingredients taste like a gourmet meal. Every dish is made with love and creativity.',
+        title: "You're an Amazing Cook",
+        description: 'You can make even the simplest ingredients taste like a gourmet meal. Every dish is made with love and creativity.',
         emoji: '👩‍🍳',
         color: 'orange',
         category: 'talents'
       },
       {
         id: '6',
-        title: 'Loyal Friend',
-        description: 'Once you\'re her friend, you\'re family. She\'s always there through thick and thin, ready to support and cheer you on.',
+        title: "You're a Loyal Friend",
+        description: 'Once someone is your friend, they\'re family. You\'re always there through thick and thin, ready to support and cheer others on.',
         emoji: '🤝',
         color: 'green',
         category: 'kindness'
       },
       {
         id: '7',
-        title: 'Adventurous Spirit',
-        description: 'She\'s always up for trying new things and exploring new places. Her sense of adventure is truly inspiring!',
+        title: 'Your Adventurous Spirit',
+        description: "You're always up for trying new things and exploring new places. Your sense of adventure is truly inspiring!",
         emoji: '🗺️',
         color: 'teal',
         category: 'personality'
       },
       {
         id: '8',
-        title: 'Natural Leader',
-        description: 'People naturally look up to her. She leads with grace, wisdom, and always puts others first.',
+        title: 'Your Natural Leadership',
+        description: 'People naturally look up to you. You lead with grace, wisdom, and always put others first.',
         emoji: '👑',
         color: 'indigo',
         category: 'uniqueness'
       },
       {
         id: '9',
-        title: 'Constant Growth',
-        description: 'She\'s always learning, growing, and becoming a better version of herself. Her dedication to self-improvement is admirable.',
+        title: 'Your Constant Growth',
+        description: "You're always learning, growing, and becoming a better version of yourself. Your dedication to self-improvement is admirable.",
         emoji: '🌱',
         color: 'green',
         category: 'growth'
       },
       {
         id: '10',
-        title: 'Perfect Listener',
-        description: 'She has this amazing ability to really listen and understand. When you talk to her, you feel truly heard and valued.',
+        title: "You're a Perfect Listener",
+        description: 'You have this amazing ability to really listen and understand. When someone talks to you, they feel truly heard and valued.',
         emoji: '👂',
         color: 'purple',
         category: 'kindness'
       },
       {
         id: '11',
-        title: 'Incredible Memory',
-        description: 'She remembers the little things that matter - birthdays, favorite foods, inside jokes. It shows how much she cares.',
+        title: 'Your Incredible Memory',
+        description: 'You remember the little things that matter - birthdays, favorite foods, inside jokes. It shows how much you care.',
         emoji: '🧠',
         color: 'blue',
         category: 'uniqueness'
       },
       {
         id: '12',
-        title: 'Dancing Queen',
-        description: 'Whether it\'s a formal dance or just goofing around in the kitchen, she moves with such joy and freedom!',
+        title: "You're the Dancing Queen",
+        description: "Whether it's a formal dance or just goofing around in the kitchen, you move with such joy and freedom!",
         emoji: '💃',
         color: 'pink',
         category: 'talents'

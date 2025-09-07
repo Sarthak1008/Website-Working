@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-movie',
@@ -11,20 +11,21 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 export class MovieComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('filmStrip', { static: false }) filmStripRef!: ElementRef;
   
-  // Array to store your photo URLs - replace these with your own images
+  // Use local images from assets folder for the film reel
   filmFrames: string[] = [
-    'https://picsum.photos/200/150?random=1',
-    'https://picsum.photos/200/150?random=2',
-    'https://picsum.photos/200/150?random=3',
-    'https://picsum.photos/200/150?random=4',
-    'https://picsum.photos/200/150?random=5',
-    'https://picsum.photos/200/150?random=6',
-    'https://picsum.photos/200/150?random=7',
-    'https://picsum.photos/200/150?random=8',
-    'https://picsum.photos/200/150?random=9',
-    'https://picsum.photos/200/150?random=10',
-    'https://picsum.photos/200/150?random=11',
-    'https://picsum.photos/200/150?random=12'
+    'assets/1.jpg',
+    'assets/2.jpg',
+    'assets/4.jpg',
+    'assets/5.jpg',
+    'assets/6.jpg',
+    'assets/7.jpg',
+    'assets/8.jpg',
+    'assets/9.jpg',
+    'assets/11.jpg',
+    'assets/12.jpg',
+    'assets/13.jpg',
+    'assets/14.jpg',
+    'assets/15.jpg'
   ];
 
   isAnimating = true;

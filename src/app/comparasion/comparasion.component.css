@@ -195,6 +195,7 @@
 /* Utility classes for gradient backgrounds */
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  min-height: unset !important;
 }
 
 /* Color stops */
@@ -306,6 +307,79 @@
 .text-yellow-500 { color: #eab308; }
 .text-indigo-600 { color: #4f46e5; }
 .text-white { color: #ffffff; }
+
+/* Site title sizing and responsiveness */
+.site-title {
+  font-size: 4rem; /* base desktop */
+  line-height: 1.1;
+}
+@media (min-width: 1024px) { /* large screens */
+  .site-title { font-size: 5rem; }
+}
+@media (max-width: 768px) { /* tablets/phones */
+  .site-title { font-size: 3rem; }
+}
+
+/* Center and tighten hero header spacing */
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem; /* small vertical gaps */
+  margin-bottom: 2rem; /* compact bottom spacing */
+}
+.hero-icon { margin-bottom: 0.25rem; }
+.subtitle { margin-top: 0.25rem; margin-bottom: 0.5rem; }
+
+/* Safe layout to avoid collision with right film strip and bottom marquee */
+.safe-layout {
+  padding-right: 40px;  /* space between content and reel */
+  margin-right: 370px;  /* 350px reel + 20px gap */
+  padding-bottom: 160px;
+}
+@media (max-width: 1440px) {
+  .safe-layout {
+    margin-right: 320px;
+    padding-right: 32px;
+  }
+}
+@media (max-width: 1280px) {
+  .safe-layout {
+    margin-right: 260px;
+    padding-right: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  .safe-layout {
+    margin-right: 180px;
+    padding-right: 16px;
+    padding-bottom: 140px;
+  }
+}
+@media (max-width: 640px) {
+  .safe-layout {
+    margin-right: 0;
+    padding-right: 0;
+    padding-bottom: 120px;
+  }
+}
+
+/* Global padding to account for fixed movie reel (failsafe) */
+.reel-safe {
+  padding-right: 370px; /* matches reel width */
+}
+@media (max-width: 1440px) {
+  .reel-safe { padding-right: 320px; }
+}
+@media (max-width: 1280px) {
+  .reel-safe { padding-right: 260px; }
+}
+@media (max-width: 1024px) {
+  .reel-safe { padding-right: 180px; }
+}
+@media (max-width: 640px) {
+  .reel-safe { padding-right: 0; }
+}
 
 /* Background colors */
 .bg-white { background-color: #ffffff; }

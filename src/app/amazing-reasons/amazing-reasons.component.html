@@ -3,10 +3,10 @@
   <div class="reasons-header">
     <h1 class="reasons-title">
       <span class="sparkle">✨</span>
-      Why She's Amazing
+      Why Shivani Is Amazing
       <span class="sparkle">✨</span>
     </h1>
-    <p class="reasons-subtitle">All the wonderful reasons we adore her! 💖</p>
+    <p class="reasons-subtitle">A little scrapbook of all the ways you make life brighter, Shivani. 💖</p>
     
     <!-- Add Reason Button -->
     <button class="add-reason-btn" (click)="toggleAddReason()">
@@ -26,14 +26,14 @@
   <!-- Add Reason Form -->
   <div class="add-reason-form" *ngIf="showAddReason">
     <div class="form-container">
-      <h3>Share Why She's Amazing! 🌟</h3>
+      <h3>Share Why Shivani Is Amazing! 🌟</h3>
       <div class="form-group">
         <label for="reasonTitle">Reason Title:</label>
         <input 
           type="text" 
           id="reasonTitle"
           [(ngModel)]="newReason.title" 
-          placeholder="e.g., Her Amazing Smile"
+          placeholder="e.g., Her sunshine smile on rainy days"
           class="form-input"
         >
       </div>
@@ -52,7 +52,7 @@
         <textarea 
           id="reasonDescription"
           [(ngModel)]="newReason.description" 
-          placeholder="Describe why this makes her amazing..."
+          placeholder="Tell a sweet memory or reason that makes Shivani amazing..."
           class="form-textarea"
           rows="4"
         ></textarea>
@@ -151,24 +151,5 @@
   </div>
 
   <!-- Stats Section -->
-  <div class="stats-section">
-    <div class="stats-container">
-      <div class="stat-item">
-        <div class="stat-number">{{ reasons.length }}</div>
-        <div class="stat-label">Total Reasons</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">{{ getReasonsByCategory('kindness').length }}</div>
-        <div class="stat-label">Kindness Acts</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">{{ getReasonsByCategory('talents').length }}</div>
-        <div class="stat-label">Amazing Talents</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">{{ getReasonsByCategory('uniqueness').length }}</div>
-        <div class="stat-label">Unique Qualities</div>
-      </div>
-    </div>
-  </div>
+ 
 </div>

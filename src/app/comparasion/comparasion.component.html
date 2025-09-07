@@ -1,4 +1,4 @@
-<div class="bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 min-h-screen p-6 relative overflow-hidden">
+<div class="bg-gradient-to-br from-pink-100 via-purple-50 to-blue-100 min-h-screen p-6 relative overflow-hidden reel-safe">
   <!-- Floating Background Elements -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div class="floating-emoji" style="top: 10%; left: 5%; animation-delay: 0s;">🍰</div>
@@ -9,25 +9,25 @@
     <div class="floating-emoji" style="top: 70%; right: 15%; animation-delay: 5s;">🍭</div>
   </div>
 
-  <div class="max-w-4xl mx-auto relative z-10">
+  <div class="max-w-4xl mx-auto relative z-10 safe-layout">
     <!-- Header Section -->
-    <div class="text-center mb-12">
+    <div class="text-center mb-12 hero-header">
       <div class="relative inline-block">
-        <h1 class="text-6xl font-bold text-purple-800 mb-4 bounce-animation relative">
+        <h1 class="text-6xl font-bold text-purple-800 mb-4 bounce-animation relative site-title">
           <span class="sparkle-text">🐼</span>
-          <span class="text-pink-600 gradient-text">{{ friendName }}</span>
+          <span class="text-pink-600 gradient-text">Happy Birthday Shivani</span>
           <span class="sparkle-text">🐼</span>
         </h1>
         <div class="absolute -top-4 -right-4 text-4xl wiggle-animation">✨</div>
         <div class="absolute -bottom-2 -left-4 text-3xl float-animation">🎂</div>
       </div>
       
-      <div class="text-8xl mb-6 float-animation relative">
+      <div class="text-8xl float-animation relative hero-icon">
         <span class="cake-cursor">🎉</span>
         <div class="absolute -top-2 -right-2 text-2xl pulse-glow">💖</div>
       </div>
       
-      <p class="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+      <p class="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed subtitle">
         Click on each magical section to discover the adorable similarities!
         <span class="text-pink-500 text-3xl">✨</span>
         <span class="text-purple-500 text-2xl ml-2">🎂</span>
@@ -35,15 +35,7 @@
 
       <!-- Name Input -->
       <div class="mt-8 relative">
-        <div class="relative inline-block">
-          <input
-            type="text"
-            placeholder="Enter your friend's name here!"
-            class="px-8 py-4 rounded-full border-4 border-pink-300 focus:border-pink-500 focus:outline-none text-center text-xl font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-            (keyup)="updateName($event)"
-            (focus)="onInputFocus($event)"
-            (blur)="onInputBlur($event)"
-          >
+       
           <div class="absolute -top-2 -right-2 text-2xl wiggle-animation">🎂</div>
         </div>
       </div>
@@ -233,25 +225,6 @@
     </div>
 
     <!-- Footer -->
-    <div class="text-center relative">
-      <div class="text-6xl mb-6 flex justify-center gap-4">
-        <span class="bounce-animation">🐼</span>
-        <span class="float-animation">💕</span>
-        <span class="wiggle-animation">🍰</span>
-        <span class="pulse-glow">✨</span>
-      </div>
-      <p class="text-3xl text-gray-700 mb-8 font-bold gradient-text">
-        {{ friendName }} = The Human Panda! 🎂
-      </p>
-      <button
-        (click)="celebrateAll($event)"
-        (mouseenter)="onButtonHover($event)"
-        (mouseleave)="onButtonLeave($event)"
-        class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-12 py-4 rounded-full text-2xl font-bold hover:from-pink-600 hover:to-purple-600 transition-all duration-500 pulse-glow shadow-2xl hover:shadow-3xl hover:scale-110 relative overflow-hidden group"
-      >
-        <span class="relative z-10">🎉 Celebrate Our Panda Friend! 🎉</span>
-        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      </button>
-    </div>
+    
   </div>
-</div>
+

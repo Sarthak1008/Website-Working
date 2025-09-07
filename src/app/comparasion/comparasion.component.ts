@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ComparasionComponent {
   // Changed default friend's name to shivani
-  friendName: string = 'shivani';
+  friendName: string = 'Shivani';
   private sparkleInterval: any;
 
   updateName(event: Event): void {
