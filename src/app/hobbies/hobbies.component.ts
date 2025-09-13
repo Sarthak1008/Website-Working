@@ -20,16 +20,14 @@ interface PolaroidItem {
 export class HobbiesComponent implements OnInit {
   // Replace with your own images/captions anytime
   private defaults = [
-    { url: 'https://picsum.photos/id/1062/300/300', caption: 'Friends' },
-    { url: 'https://picsum.photos/id/1025/300/300', caption: 'Cutie' },
-    { url: 'https://picsum.photos/id/1011/300/300', caption: 'Running' },
-    { url: 'https://picsum.photos/id/1005/300/300', caption: 'Sunset' },
-    { url: 'https://picsum.photos/id/1015/300/300', caption: 'Mountains' },
-    { url: 'https://picsum.photos/id/1050/300/300', caption: 'Cheese!' },
-    { url: 'https://picsum.photos/id/1018/300/300', caption: 'Adventure' },
-    { url: 'https://picsum.photos/id/1022/300/300', caption: 'Nature' },
-    { url: 'https://picsum.photos/id/1035/300/300', caption: 'Art' },
-    { url: 'https://picsum.photos/id/1040/300/300', caption: 'Music' }
+    { url: 'assets/16.jpg', caption: 'Photography' },
+    { url: 'assets/17.jpg', caption: 'Art & Creativity' },
+    { url: 'assets/18.jpg', caption: 'Nature Walks' },
+    { url: 'assets/19.jpg', caption: 'Cooking Adventures' },
+    { url: 'assets/20.jpg', caption: 'Reading & Learning' },
+    { url: 'assets/21.jpg', caption: 'Music & Dance' },
+    { url: 'assets/22.jpg', caption: 'Travel Memories' },
+    { url: 'assets/23.jpg', caption: 'Friends & Fun' }
   ];
 
   // Interactive properties
